@@ -1,0 +1,3 @@
+[submodule "models/ePhotosynthesis_C"]
+	path = models/ePhotosynthesis_C
+	url = https://github.com/cropsinsilico/ePhotosynthesis_C.git
