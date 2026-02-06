@@ -35,6 +35,7 @@ struct EPS_inputs
 void EPS_run(double begintime, double stoptime, double stepsize, double abstol, double reltol, double Tp,double PAR, double Ci, int maxSubSteps,const EPS_inputs& EPSinput)
 {
        bool record = false;
+       bool saveMetabolite = false;
        std::string evn="InputEvn.txt";
        std::string atpcost="InputATPCost.txt";
        std::string enzymeFile="Einput7.txt";

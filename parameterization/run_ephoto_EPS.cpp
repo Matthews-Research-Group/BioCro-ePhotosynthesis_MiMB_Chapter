@@ -37,6 +37,8 @@ void EPS_run(double begintime, double stoptime, double stepsize, double abstol, 
 //When record is false, the Penalties will be Zero in driver.cpp
 //This is because all metabolites will be zero if record=false
        bool record = false;
+//this outputs all metabolites' time series, and can be turned off
+       bool saveMetabolite = false;
        std::string evn="InputEvn.txt";
        std::string atpcost="InputATPCost.txt";
        std::string enzymeFile="Einput7.txt";

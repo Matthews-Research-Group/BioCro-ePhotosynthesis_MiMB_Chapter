@@ -7,7 +7,7 @@ source("my_functions/biocro_FvCB.R")
 plot_type = 1 #1:ACi; 2: AQ
 prefix = c("ACi","AQ")
 
-use_default_Q10s = TRUE 
+use_default_Q10s = FALSE 
 Tgrowth = 24 
 new_gamma_star =  FALSE 
 new_Vcmax_norm =  FALSE
@@ -29,7 +29,7 @@ alpha1 = alpha1_alpha2[2]
 alpha2 = alpha1_alpha2[3]
 
 if(!use_default_Q10s){
-  Q10s = read.csv(paste0('Q10_fitting_results/ePhotosynthesis_optQ10_ACi_',keyword,'_r1.csv'))
+  Q10s = read.csv(paste0('outputs/ePhotosynthesis_optQ10_ACi_',keyword,'.csv'))
   Q10s = Q10s[-1]
 }
 
