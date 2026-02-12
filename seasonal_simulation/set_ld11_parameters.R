@@ -6,10 +6,10 @@ set_ld11_parameters<- function(year,soybean_parameters0){
   soybean_parameters0$b1 = 5.375           # estimated from average of 2021 and 2022 data 
 
   # From A-Ci curves
-  soybean_parameters0$vmax1        = soybean_fvcb_parameters$mean[soybean_fvcb_parameters$parameter=="Vcmax_at_25"]
-  soybean_parameters0$jmax         = soybean_fvcb_parameters$mean[soybean_fvcb_parameters$parameter=="Jmax_at_25"]
-  soybean_parameters0$Rd           = soybean_fvcb_parameters$mean[soybean_fvcb_parameters$parameter=="RL_at_25"]
-  soybean_parameters0$tpu_rate_max = soybean_fvcb_parameters$mean[soybean_fvcb_parameters$parameter=="TPU_at_25"]
+  soybean_parameters0$Vcmax_at_25 = soybean_fvcb_parameters$mean[soybean_fvcb_parameters$parameter=="Vcmax_at_25"]
+  soybean_parameters0$Jmax_at_25  = soybean_fvcb_parameters$mean[soybean_fvcb_parameters$parameter=="Jmax_at_25"]
+  soybean_parameters0$RL_at_25    = soybean_fvcb_parameters$mean[soybean_fvcb_parameters$parameter=="RL_at_25"]
+  soybean_parameters0$Tp_at_25   = soybean_fvcb_parameters$mean[soybean_fvcb_parameters$parameter=="TPU_at_25"] 
   #iSp
   soybean_parameters0$iSp = 3
 
