@@ -2,9 +2,11 @@ library(reshape2)
 library(ggplot2)
 library(BioCro)
 rm(list=ls())
+source("../helper_functions/colorblind_palette.R")
 source("my_functions/biocro_FvCB.R")
-use_default_Q10s = FALSE 
+use_default_Q10s = TRUE 
 
+my_palette = cb8()
 keyword = "ld11"
 Tgrowth = 24 
 new_gamma_star = FALSE 
@@ -18,7 +20,7 @@ if(!use_default_Q10s){
 }
 
 prefix = c("ACi","AQ","AT")
-PAR = 400 
+PAR = 2000 
 executable_path <- "./myephoto.exe" 
 ##get alpha1 & alpha2
 para_output = read.csv(paste0('outputs/ePhotosynthesis_optimal_alpha1_alpha2_',keyword,'.csv'))
@@ -50,7 +52,6 @@ for (curve_option in curve_options){
   args = as.numeric(args)
   print(length(args))
   system2(executable_path, args = args)
-stop()
   #read in ephoto results
   ephoto = read.csv("output.data",header=FALSE)
   colnames(ephoto) = c("PAR","Tleaf","Ci","An")
@@ -102,6 +103,7 @@ stop()
       labs(x = bquote(T~(degree*C)),
            y = bquote(An~(mu*mol ~ m^-2 ~ s^-1))
       ) +
+      scale_color_manual(values=my_palette[c(3,2)])+
       theme_bw() +
       theme(text = element_text(size = 16),
             legend.position = c(0.8, 0.2),

@@ -3,10 +3,12 @@ library(ggplot2)
 library(BioCro)
 library(PhotoGEA)
 rm(list=ls())
+source("../helper_functions/colorblind_palette.R")
 source("my_functions/biocro_FvCB.R")
 plot_type = 1 #1:ACi; 2: AQ
 prefix = c("ACi","AQ")
 
+my_palette = cb8()
 use_default_Q10s = FALSE 
 Tgrowth = 24 
 new_gamma_star =  FALSE 
@@ -110,7 +112,7 @@ if(plot_type==1){
   df_melt = cbind(df_melt,sd = c(sd_ePhoto,sd_FvCB,sd_obs))
   myplot<-ggplot(df_melt, aes(x = Ci, y = value, color = variable)) +
     geom_line() + geom_point(size=3) +
-    scale_color_manual(values=c("green","blue", "black"))+
+    scale_color_manual(values=my_palette[c(3,2,1)])+
     geom_errorbar(aes(ymin=value-sd, ymax=value+sd), width=.2,
                   position=position_dodge(0.05)) +
     labs(x = bquote(Ci~(ppm)),
@@ -183,7 +185,7 @@ if(plot_type==1){
   df_melt = cbind(df_melt,sd = c(sd_ePhoto,sd_FvCB,sd_obs))
   myplot<-ggplot(df_melt, aes(x = Qin, y = value, color = variable)) +
     geom_line() + geom_point(size=3) +
-    scale_color_manual(values=c("green","blue", "black"))+
+    scale_color_manual(values=my_palette[1:3])+
     geom_errorbar(aes(ymin=value-sd, ymax=value+sd), width=.2,
                   position=position_dodge(0.05)) +
     labs(x = bquote(Q~(mu*mol ~ m^-2 ~ s^-1)),
