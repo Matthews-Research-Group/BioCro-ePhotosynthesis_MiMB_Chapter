@@ -3,15 +3,11 @@ library(BioCro)
 library(BMLePhoto)
 rm(list=ls())
 source("set_ld11_parameters.R")
-use_ePhoto = TRUE
-if(use_ePhoto){
-  out_key = "ePhoto"
-}else{
-  out_key = "FvCB"
-}
-
+out_key = "ePhoto"
 year <- '2002' # 
+
 exp_id = 0
+
 output_folder = paste0("results_",year,"_",out_key,"_",exp_id)  #the folder to save daily outputs
 dir.create(output_folder)
 dates <- data.frame("year" = 2001:2006,
@@ -77,8 +73,9 @@ derivative_modules <- soybean2$differential_modules
 # soybean_initial_state
 soybean_initial_state <- soybean2$initial_values 
 
-
 solver_params <- soybean2$ode_solver  
+
+print(soybean_parameters[c("Vcmax_at_25","Jmax_at_25","RL_at_25","Tp_at_25","iSp")])
 
 #loop through the number of run days
 for (i in 1:run_days){
