@@ -1,8 +1,8 @@
-merge_results<-function(site_id,years,exp_id,out_key,folder_path){
+merge_results<-function(years,exp_id,out_key,folder_path){
   result_list = list()
   for (i in 1:length(years)){
     year = years[i]
-    output_folder = paste0("../",folder_path,"/results_site",site_id,"_exp",exp_id,"_",year,"_",out_key)  #the folder to save daily outputs
+    output_folder = paste0(folder_path,"/results_",year,"_",out_key,"_",exp_id)  #the folder to save daily outputs
     print(output_folder)
     all_files    = dir(path=output_folder,pattern="*.rds",full.names = TRUE)
     result_oneyear = c()
