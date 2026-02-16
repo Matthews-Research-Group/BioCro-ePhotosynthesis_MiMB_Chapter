@@ -57,15 +57,11 @@ soybean_parameters = set_ld11_parameters(year,soybean_parameters)
 
 # steady_state_modules
 steady_state_modules <- soybean2$direct_modules 
-#if run ePhoto's leaf assimilation
-#Otherwise, the default FvCB will be run
-if(use_ePhoto){
-  # now use BMLePhoto's modules
-  steady_state_modules[[which(steady_state_modules=="BioCro:ten_layer_canopy_properties")]] = "BMLePhoto:ten_layer_canopy_properties"
-  steady_state_modules[[which(steady_state_modules=="BioCro:ten_layer_c3_canopy")]] = "BMLePhoto:ten_layer_c3_canopy"
-  steady_state_modules[[which(steady_state_modules=="BioCro:ten_layer_canopy_integrator")]] = "BMLePhoto:ten_layer_canopy_integrator"
-  soybean_parameters$exp_id  = exp_id
-}
+#now use BMLePhoto's modules
+steady_state_modules[[which(steady_state_modules=="BioCro:ten_layer_canopy_properties")]] = "BMLePhoto:ten_layer_canopy_properties"
+steady_state_modules[[which(steady_state_modules=="BioCro:ten_layer_c3_canopy")]] = "BMLePhoto:ten_layer_c3_canopy"
+steady_state_modules[[which(steady_state_modules=="BioCro:ten_layer_canopy_integrator")]] = "BMLePhoto:ten_layer_canopy_integrator"
+soybean_parameters$exp_id  = exp_id
 
 # derivative_modules
 derivative_modules <- soybean2$differential_modules 
